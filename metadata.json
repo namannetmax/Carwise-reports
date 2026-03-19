@@ -1,0 +1,5 @@
+{
+  "name": "Remix: CarWise AI",
+  "description": "An intelligent used car purchasing assistant that performs deep web research to provide reliability scores, risk assessments, and technical analysis for specific vehicles.",
+  "requestFramePermissions": []
+}
