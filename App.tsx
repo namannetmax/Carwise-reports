@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Car, CarFront, Gauge, ShieldCheck, ChevronRight, Home, Crown, Zap } from 'lucide-react';
+import { Car, CarFront, Gauge, ShieldCheck, ChevronRight, Hop as Home, Crown, Zap } from 'lucide-react';
 import InputForm from './components/InputForm';
 import ReportView from './components/ReportView';
 import HistoryList from './components/HistoryList';
 import ComparisonView from './components/ComparisonView';
 import PricingModal from './components/PricingModal';
+import MockReports from './components/MockReports';
 import { CarDetails, AnalysisResult, UserProfile, SubscriptionPlan } from './types';
 import { analyzeCar } from './services/geminiService';
 import { saveAnalysis, getHistory, deleteAnalysis, getUserProfile, updatePlan, incrementUsage } from './services/storageService';
@@ -187,17 +188,18 @@ const App: React.FC = () => {
 
         {view === 'home' && (
           <>
-            <InputForm 
-              onAnalyze={handleAnalyze} 
-              isLoading={loading} 
+            <InputForm
+              onAnalyze={handleAnalyze}
+              isLoading={loading}
               plan={profile.plan}
               usageCount={profile.analysisCount}
               limit={profile.limit}
               onShowPricing={() => setShowPricing(true)}
               initialData={editingCarDetails}
             />
-            <HistoryList 
-              history={history} 
+            <MockReports onSelect={handleSelectHistoryItem} />
+            <HistoryList
+              history={history}
               onSelect={handleSelectHistoryItem}
               onDelete={handleDelete}
               selectedIds={selectedIds}
